@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{49812CF2-1B0B-6CA3-9A11-98575C8D9324}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BulletController.cs">
+    <Files>
+      <File FileName="Assets/Scripts/CameraController.cs" Line="21" Column="38" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="11" Column="36" />
+      <File FileName="Assets/BulletController.cs" Line="15" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
