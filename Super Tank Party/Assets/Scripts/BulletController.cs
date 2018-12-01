@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour {
 
     public float speed = 14f;
+    public int damage = 100;
 
     void FixedUpdate()
     {
@@ -16,7 +17,8 @@ public class BulletController : MonoBehaviour {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall")) {
             Destroy(gameObject);
         } else if (collision.gameObject.CompareTag("Player")) {
-            Debug.Log("Player hit");
+            collision.gameObject.GetComponent<PlayerController>().Hit(damage);
+            Destroy(gameObject);
         }
     }
 }
