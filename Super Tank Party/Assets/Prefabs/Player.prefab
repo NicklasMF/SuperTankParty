@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 4594867710534614}
   - component: {fileID: 50637564976000420}
   - component: {fileID: 61711410978663152}
+  - component: {fileID: 114975250797619008}
   - component: {fileID: 114552557452010416}
   m_Layer: 0
   m_Name: Player
@@ -187,6 +188,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae19ca966a7d4d3d8818ab13be8d463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyShooting: 107
+  keyRotating: 108
+  graphics: {fileID: 1272669385903460}
+  graphicColor: {fileID: 212753211187722694}
+--- !u!114 &114975250797619008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519796471849184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e795bd3bb8f4bd78fb97f8b6e9208e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  points: 0
 --- !u!212 &212753211187722694
 SpriteRenderer:
   m_ObjectHideFlags: 1

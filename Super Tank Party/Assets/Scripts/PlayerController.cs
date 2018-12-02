@@ -6,9 +6,9 @@ public class PlayerController : MonoBehaviour {
 
     GameController gameController;
 
-    [Header("Debug")]
-    public KeyCode keyShooting = KeyCode.K;
-    public KeyCode keyRotating = KeyCode.L;
+    //Debugging
+    KeyCode keyShooting;
+    KeyCode keyRotating;
 
     // Basics
     int life;
@@ -23,9 +23,6 @@ public class PlayerController : MonoBehaviour {
     float timeUntilNewBullet;
     float rechargeTime;
 
-    // Points
-    public int points;
-
     [Header("Prefabs")]
     [SerializeField] GameObject graphics;
     [SerializeField] SpriteRenderer graphicColor;
@@ -36,16 +33,20 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         Init();
-        Setup();
+        SetupGame();
 	}
+
+    public void SetupKeys(KeyCode _rotate, KeyCode _shoot) {
+        keyRotating = _rotate;
+        keyShooting = _shoot;
+    }
 
     void Init() {
         bulletPrefab = gameController.bulletPrefab;
         bulletParent = gameController.bulletParent;
-        points = 0;
     }
 
-    void Setup() {
+    void SetupGame() {
         life = gameController.life;
         bulletCount = maxBulletCount;
         rechargeTime = gameController.bulletsRecharge;

@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    [Header("Debug")]
+    public KeyCode[] keys;
+
     [Header("General Settings")]
     public Color[] playerColors = new Color[4];
+    public List<GameObject> players = new List<GameObject>();
 
     [Header("Game Settings")]
     public int life = 100;
@@ -15,7 +19,7 @@ public class GameController : MonoBehaviour {
 
 
     [Header("Prefabs and Stuff")]
-    [SerializeField] GameObject playerPrefab;
+    public GameObject playerPrefab;
     public GameObject bulletPrefab;
     public Transform bulletParent;
 

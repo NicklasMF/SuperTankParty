@@ -8,6 +8,9 @@ public class MenuUIController : MonoBehaviour {
     [SerializeField] Transform menuMain;
     [SerializeField] Transform menuPlayerSelection;
 
+    [Header("Player Selection")]
+    public Transform playerWrapper;
+
     void Awake() {
         ShowMenu();
     }

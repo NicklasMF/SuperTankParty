@@ -13,8 +13,7 @@ public class MenuPlayerSelection : MonoBehaviour {
 
     Button button;
 
-    void Start()
-    {
+    void Start() {
         Setup();
         button = GetComponent<Button>();
         button.onClick.AddListener(Select);
