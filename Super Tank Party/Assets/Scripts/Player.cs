@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
     public void Setup(int _index, Color _color) {
         index = _index;
         color = _color;
+        GetComponent<PlayerController>().graphicColor.color = color;
         points = 0;
     }
 

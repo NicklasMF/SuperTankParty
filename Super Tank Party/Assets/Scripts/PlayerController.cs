@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     float speed;
     float rotateSpeed;
     bool rotateRight;
+    public bool dead;
 
 
     // Shooting
@@ -25,13 +26,16 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Prefabs")]
     [SerializeField] GameObject graphics;
-    [SerializeField] SpriteRenderer graphicColor;
+    public SpriteRenderer graphicColor;
 
     GameObject bulletPrefab;
     Transform bulletParent;
 
-    void Start () {
+    void Awake() {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+    }
+
+    void Start () {
         Init();
         SetupGame();
 	}
@@ -46,7 +50,9 @@ public class PlayerController : MonoBehaviour {
         bulletParent = gameController.bulletParent;
     }
 
-    void SetupGame() {
+    public void SetupGame() {
+        gameObject.SetActive(true);
+        dead = false;
         life = gameController.life;
         bulletCount = maxBulletCount;
         rechargeTime = gameController.bulletsRecharge;
@@ -62,7 +68,7 @@ public class PlayerController : MonoBehaviour {
         RechargeShoot();
 
         if (Input.GetKey(keyRotating)) {
-            Turn();
+            Rotate();
         }
 
         if (Input.GetKeyDown(keyShooting)) {
@@ -75,7 +81,7 @@ public class PlayerController : MonoBehaviour {
         GetComponent<Rigidbody2D>().AddForce(transform.up * speed);
     }
 
-    void Turn() {
+    public void Rotate() {
         if (rotateRight) {
             transform.Rotate(0, 0, -rotateSpeed * Time.deltaTime);
         } else {
@@ -83,7 +89,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Shoot() {
+    public void Shoot() {
         if (bulletCount > 0) {
             bulletCount--;
             GameObject bullet = Instantiate(bulletPrefab, bulletParent);
@@ -112,6 +118,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Die() {
-
+        dead = true;
+        gameController.PlayerDead(gameObject);
     }
 }

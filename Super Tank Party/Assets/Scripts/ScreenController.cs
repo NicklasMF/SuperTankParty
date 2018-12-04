@@ -15,9 +15,31 @@ public class ScreenController : MonoBehaviour {
 
     AsyncOperation asyncLoadLevel;
 
-    public void StartGame() {
+    void Start() {
+        if (GetComponent<GameController>().isDebugging) {
+            SetupDebugging();
+        }
+    }
+
+    public void StartPractice() {
+        GetComponent<GameController>().gameStarted = false;
         SetupPreGame();
         StartCoroutine(LoadLevel(startingLevel));
+    }
+
+    public void StartGame() {
+        GetComponent<GameController>().gameStarted = true;
+        GoToNextLevel();
+    }
+
+    void SetupDebugging() {
+        for (int i = 0; i < GetComponent<GameController>().playerCount; i++) {
+            GameObject player = Instantiate(GetComponent<GameController>().playerPrefab);
+            player.GetComponent<Player>().Setup(i, GetComponent<GameController>().playerColors[i]);
+            player.GetComponent<PlayerController>().SetupKeys(GetComponent<GameController>().keys[i * 2], GetComponent<GameController>().keys[i * 2 + 1]);
+            GetComponent<GameController>().players.Add(player);
+        }
+        SetupGame();
     }
 
     void SetupPreGame() {
@@ -46,24 +68,20 @@ public class ScreenController : MonoBehaviour {
 
     void SetupGame() {
         uiController = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIController>();
-        PositionPlayers();
-    }
-
-    void PositionPlayers() {
-        Transform positionParent = GameObject.FindGameObjectWithTag("StartingPositions").transform;
-        foreach (GameObject player in GetComponent<GameController>().players) {
-            player.transform.position = positionParent.GetChild(player.GetComponent<Player>().index).position;
-        }
+        uiController.GetComponent<UIController>().SetupControls(GetComponent<GameController>().players);
+        GetComponent<GameController>().StartRound();
     }
 
     public void GoToNextLevel() {
         currentLevelIndex++;
-        if (levels.Length < currentLevelIndex) {
-            StartCoroutine(LoadLevel(levels[currentLevelIndex]));
-            SetupGame();
-        } else {
-            SceneManager.LoadScene(mainMenu);
+        if (currentLevelIndex >= levels.Length) {
+            currentLevelIndex = 0;
         }
+        StartCoroutine(LoadLevel(levels[currentLevelIndex]));
     }
-    
+
+    public void EndGame() {
+        SceneManager.LoadScene(mainMenu);
+    }
+
 }
