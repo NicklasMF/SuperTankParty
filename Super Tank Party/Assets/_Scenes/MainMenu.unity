@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 43888798}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,12 +217,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 43888793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1dd556ac030446fba552829b775d8c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 78213c09eca5c4d698f580ec5d935e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menuMain: {fileID: 759026552}
   menuPlayerSelection: {fileID: 1186397056}
-  playerWrapper: {fileID: 84007043}
 --- !u!1 &56174885
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +298,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 43888798}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowMenu
         m_Mode: 1
         m_Arguments:
@@ -442,36 +441,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224619337926400186, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
-        type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
-        type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fff5bb01a4f924a95bf9ed32f58a8e0c, type: 2}
@@ -1299,6 +1268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1186397056}
+  - component: {fileID: 1186397057}
   m_Layer: 5
   m_Name: PlayerSelection
   m_TagString: Untagged
@@ -1329,6 +1299,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1186397057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1186397055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3948810c8329c4e56aa7e341a6a0ead2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 1525623816}
+  playerWrapper: {fileID: 84007043}
 --- !u!1 &1192281719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1428,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114340322428152274, guid: ee74a81c9f1b245d9b8f3dcf99ee6787,
         type: 2}
-      propertyPath: menuUIController
+      propertyPath: menuController
       value: 
       objectReference: {fileID: 43888798}
     m_RemovedComponents: []

@@ -5,31 +5,20 @@ using UnityEngine.UI;
 
 public class MenuPlayerSelection : MonoBehaviour {
 
-    public bool isSelected;
+    [SerializeField] Button startButton;
+    public Transform playerWrapper;
 
-    [SerializeField] Transform spriteOverlayer;
-    [SerializeField] Image spriteUpper;
-    int playerIndex;
-
-    Button button;
-
-    void Start() {
-        Setup();
-        button = GetComponent<Button>();
-        button.onClick.AddListener(Select);
-
+    void Awake() {
+        CheckIfMinimumTwoPlayers();
     }
 
-    void Setup() {
-        playerIndex = transform.GetSiblingIndex();
-        isSelected = false;
-        spriteOverlayer.gameObject.SetActive(!isSelected);
-        spriteUpper.color = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().playerColors[playerIndex];
-    }
-
-    void Select() {
-        isSelected = !isSelected;
-
-        spriteOverlayer.gameObject.SetActive(!isSelected);
+    public void CheckIfMinimumTwoPlayers() {
+        int i = 0;
+        foreach(Transform child in playerWrapper) {
+            if (child.GetComponent<MenuPlayerSelectionPlayer>().isSelected) {
+                i++;
+            }
+        }
+        startButton.gameObject.SetActive(i > 1);
     }
 }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     float rotateSpeed;
     bool rotateRight;
     public bool dead;
+    public bool canMove;
 
 
     // Shooting
@@ -60,9 +61,13 @@ public class PlayerController : MonoBehaviour {
         speed = gameController.speedStandard;
         rotateSpeed = gameController.rotateSpeed;
         rotateRight = true;
+        canMove = false;
     }
 	
 	void FixedUpdate () {
+        if (!canMove) {
+            return;
+        }
 
         Move();
         RechargeShoot();

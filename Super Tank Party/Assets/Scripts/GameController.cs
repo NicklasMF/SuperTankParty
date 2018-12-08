@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 
     [Header("Game Settings")]
     public bool gameStarted;
+    public bool roundStarted;
     public int life = 100;
     public float speedStandard = 15f;
     public float rotateSpeed = 120f;
@@ -44,35 +45,67 @@ public class GameController : MonoBehaviour {
         yield return new WaitForSeconds(2f);
 
         List<GameObject> playersAlive = new List<GameObject>();
-        foreach(GameObject player in players) {
+        players.ForEach((player) => {
             if (player.GetComponent<PlayerController>().dead) {
                 playersAlive.Add(player);
             }
-        }
+        });
         if (playersAlive.Count == 0) {
-            print("Draw");
-            StartRound();
+            // Display something about a draw
+            PrepareNewRound();
         } else if (playersAlive.Count == 1) {
+            players.ForEach((player) => {
+                player.SetActive(false);
+            });
             if (gameStarted) {
                 players[0].GetComponent<Player>().points++;
-                if (players[0].GetComponent<Player>().points >= winCondition) {
-                    GetComponent<ScreenController>().EndGame();
-                } else {
-                    StartRound();
-                }
+                GetComponent<ScreenController>().ShowResults();
             } else {
-                GetComponent<ScreenController>().StartGame();
+                if (!gameStarted) {
+                    GetComponent<ScreenController>().uiController.HideText();
+                    gameStarted = true;
+                }
+                EndRound();
             }
         }
     }
 
-    public void StartRound() {
+    public void EndRound() {
+        bool endGame = false;
+        foreach(GameObject player in players) {
+            if (player.GetComponent<Player>().points >= winCondition) {
+                GetComponent<ScreenController>().EndGame();
+                endGame = true;
+            }
+        }
+        if (!endGame) {
+            PrepareNewRound();
+        }
+    }
+
+    public void PrepareNewRound() {
+        roundStarted = false;
         Transform positionParent = GameObject.FindGameObjectWithTag("StartingPositions").transform;
-        foreach (GameObject player in players) {
+        players.ForEach((player) => {
             player.transform.position = positionParent.GetChild(player.GetComponent<Player>().index).position;
             player.transform.rotation = positionParent.GetChild(player.GetComponent<Player>().index).rotation;
             player.GetComponent<PlayerController>().SetupGame();
+
+        });
+        StartCoroutine(CountdownToStartRound());
+    }
+
+    IEnumerator CountdownToStartRound() {
+        yield return new WaitForSeconds(1f);
+
+        if (gameStarted) {
+            GetComponent<ScreenController>().uiController.ShowText("GO GO GO!");
+        } else {
+            GetComponent<ScreenController>().uiController.ShowText("Kill to begin", true);
         }
-        GetComponent<ScreenController>().uiController.ShowText("GO GO GO!");
+        roundStarted = true;
+        players.ForEach((player) => {
+            player.GetComponent<PlayerController>().canMove = true;
+        });
     }
 }

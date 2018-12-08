@@ -61,17 +61,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BulletController.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\MenuController.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\MenuPlayerSelectionPlayer.cs" />
     <Compile Include="Assets\Scripts\MenuPlayerSelection.cs" />
-    <Compile Include="Assets\Scripts\MenuUIController.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ScreenController.cs" />
-    <Compile Include="Assets\Scripts\UIController.cs" />
-    <Compile Include="Assets\UIPlayerControls.cs" />
-    <Compile Include="Assets\UIRotateButton.cs" />
+    <Compile Include="Assets\Scripts\UI\UIController.cs" />
+    <Compile Include="Assets\Scripts\UI\UIPlayerControls.cs" />
+    <Compile Include="Assets\Scripts\UI\UIResultController.cs" />
+    <Compile Include="Assets\Scripts\UI\UIResultPlayer.cs" />
+    <Compile Include="Assets\Scripts\UI\UIRotateButton.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/nicklas/Documents/SourceTree/SuperTankParty/Super Tank Party/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

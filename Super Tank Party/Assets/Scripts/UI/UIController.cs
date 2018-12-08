@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
 
     [SerializeField] Transform playerControls4;
-    [SerializeField] GameObject textWrapper; 
+    [SerializeField] GameObject textWrapper;
+    [SerializeField] GameObject resultWrapper;
 
     void Awake() {
         DontDestroyOnLoad(gameObject);
@@ -28,8 +29,21 @@ public class UIController : MonoBehaviour {
         }
     }
 
-    public void ShowText(string _text) {
+    public void ShowResults(List<GameObject> _players) {
+        resultWrapper.GetComponent<UIResultController>().ShowResults(_players);
+    }
+
+    public void ShowText(string _text, bool _keep = false) {
         textWrapper.GetComponentInChildren<Text>().text = _text;
-        textWrapper.GetComponent<Animator>().SetTrigger("Show");
+        if (_keep) {
+            textWrapper.GetComponent<Animator>().SetBool("Show", true);
+        } else {
+            textWrapper.GetComponent<Animator>().SetTrigger("TriggerShow");
+        }
+    }
+
+    public void HideText() {
+        textWrapper.GetComponent<Animator>().SetBool("Show", false);
+        print("Hide");
     }
 }

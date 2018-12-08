@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61111e940bd164bb580d63b150836cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugging: 1
+  playerCount: 2
   keys: 710000007700000061000000730000006f000000700000006b0000006c000000
   playerColors:
   - {r: 1, g: 0, b: 0, a: 1}
@@ -59,10 +61,13 @@ MonoBehaviour:
   - {r: 0.02859211, g: 1, b: 0, a: 1}
   - {r: 0, g: 0.06871343, b: 1, a: 1}
   players: []
+  gameStarted: 0
+  roundStarted: 0
   life: 100
   speedStandard: 25
   rotateSpeed: 150
   bulletsRecharge: 1
+  winCondition: 3
   playerPrefab: {fileID: 1519796471849184, guid: 411f4f86b0273490199c986a0fb1e118,
     type: 2}
   bulletPrefab: {fileID: 1921041580388868, guid: bec37fb9962564425865d0bc5a579b93,
@@ -84,5 +89,5 @@ MonoBehaviour:
   - Level1
   mainMenu: MainMenu
   currentLevelIndex: -1
-  menuUIController: {fileID: 0}
+  menuController: {fileID: 0}
   uiController: {fileID: 0}

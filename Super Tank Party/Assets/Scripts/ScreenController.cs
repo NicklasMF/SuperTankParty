@@ -10,13 +10,13 @@ public class ScreenController : MonoBehaviour {
     [SerializeField] string mainMenu;
     public int currentLevelIndex = -1;
 
-    public MenuUIController menuUIController;
+    public MenuController menuController;
     public UIController uiController;
 
     AsyncOperation asyncLoadLevel;
 
     void Start() {
-        if (GetComponent<GameController>().isDebugging) {
+        if (GetComponent<GameController>().isDebugging && SceneManager.GetActiveScene().name != "MainMenu") {
             SetupDebugging();
         }
     }
@@ -29,6 +29,9 @@ public class ScreenController : MonoBehaviour {
 
     public void StartGame() {
         GetComponent<GameController>().gameStarted = true;
+        if (GetComponent<GameController>().players.Count == 0) {
+            SetupPreGame();
+        }
         GoToNextLevel();
     }
 
@@ -45,8 +48,8 @@ public class ScreenController : MonoBehaviour {
     void SetupPreGame() {
         GameController controller = GetComponent<GameController>();
         GetComponent<GameController>().players.Clear();
-        foreach(Transform child in menuUIController.playerWrapper) {
-            MenuPlayerSelection menuPlayer = child.GetComponent<MenuPlayerSelection>();
+        foreach(Transform child in menuController.menuPlayerSelection.GetComponent<MenuPlayerSelection>().playerWrapper) {
+            MenuPlayerSelectionPlayer menuPlayer = child.GetComponent<MenuPlayerSelectionPlayer>();
             if (menuPlayer.isSelected) {
                 GameObject player = Instantiate(controller.playerPrefab);
                 int index = child.GetSiblingIndex();
@@ -69,7 +72,11 @@ public class ScreenController : MonoBehaviour {
     void SetupGame() {
         uiController = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIController>();
         uiController.GetComponent<UIController>().SetupControls(GetComponent<GameController>().players);
-        GetComponent<GameController>().StartRound();
+        GetComponent<GameController>().PrepareNewRound();
+    }
+
+    public void ShowResults() {
+        uiController.ShowResults(GetComponent<GameController>().players);
     }
 
     public void GoToNextLevel() {
