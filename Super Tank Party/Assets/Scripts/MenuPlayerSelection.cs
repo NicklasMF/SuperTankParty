@@ -19,6 +19,6 @@ public class MenuPlayerSelection : MonoBehaviour {
                 i++;
             }
         }
-        startButton.gameObject.SetActive(i > 1);
+        startButton.interactable = i > 1;
     }
 }

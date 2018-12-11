@@ -7,23 +7,29 @@ public class MenuController : MonoBehaviour {
 
     [SerializeField] Transform menuMain;
     public Transform menuPlayerSelection;
+    Animator animator;
 
     void Awake() {
+        animator = GetComponent<Animator>();
         ShowMenu();
     }
 
     public void ShowMenu() {
         HideAll();
-        menuMain.gameObject.SetActive(true);
+        animator.SetBool("ShowMainMenu", true);
     }
 
     public void ShowPlayerSelection() {
         HideAll();
-        menuPlayerSelection.gameObject.SetActive(true);
+        animator.SetBool("ShowSelectPlayers", true);
+    }
+
+    public void StartGame() {
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<ScreenController>().StartGame();
     }
 
     void HideAll() {
-        menuMain.gameObject.SetActive(false);
-        menuPlayerSelection.gameObject.SetActive(false);
+        animator.SetBool("ShowSelectPlayers", false);
+        animator.SetBool("ShowMainMenu", false);
     }
 }

@@ -5,12 +5,21 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
+    [SerializeField] GameObject intro;
     [SerializeField] Transform playerControls4;
     [SerializeField] GameObject textWrapper;
     [SerializeField] GameObject resultWrapper;
 
+    [HideInInspector] public bool showIntro;
+
     void Awake() {
         DontDestroyOnLoad(gameObject);
+        if (!showIntro) {
+            Destroy(intro.gameObject);
+        }
+        foreach(Transform child in transform) {
+            child.gameObject.SetActive(true);
+        }
     }
 
     public void SetupControls(List<GameObject> players) {
@@ -44,6 +53,5 @@ public class UIController : MonoBehaviour {
 
     public void HideText() {
         textWrapper.GetComponent<Animator>().SetBool("Show", false);
-        print("Hide");
     }
 }

@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    public float speed = 60f;
+    public float speed = 50f;
     public int damage = 100;
+    [HideInInspector] public GameObject sender;
 
-    void FixedUpdate()
-    {
+
+    void FixedUpdate() {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall")) {
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Wall")) {
             Destroy(gameObject);
-        } else if (collision.gameObject.CompareTag("Player")) {
-            collision.gameObject.GetComponent<PlayerController>().Hit(damage);
+        } else if (coll.gameObject.CompareTag("Player") && coll.gameObject != sender) {
+            coll.gameObject.GetComponent<PlayerController>().Hit(damage);
             Destroy(gameObject);
         }
     }

@@ -55,6 +55,8 @@ MonoBehaviour:
   isDebugging: 1
   playerCount: 2
   keys: 710000007700000061000000730000006f000000700000006b0000006c000000
+  canvas: {fileID: 0}
+  showIntro: 1
   playerColors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 0.9635534, b: 0, a: 1}

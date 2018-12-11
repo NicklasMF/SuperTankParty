@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\UI\UIResultController.cs" />
     <Compile Include="Assets\Scripts\UI\UIResultPlayer.cs" />
     <Compile Include="Assets\Scripts\UI\UIRotateButton.cs" />
+    <Compile Include="Assets\Scripts\UI_PlaceFingers.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/nicklas/Documents/SourceTree/SuperTankParty/Super Tank Party/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

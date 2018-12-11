@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour {
             GameObject bullet = Instantiate(bulletPrefab, bulletParent);
             bullet.transform.position = transform.position + (transform.rotation * new Vector3(0, 2.02f));
             bullet.transform.rotation = transform.rotation;
+            bullet.GetComponent<Bullet>().sender = gameObject;
         }
     }
 

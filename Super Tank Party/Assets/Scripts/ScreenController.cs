@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ScreenController : MonoBehaviour {
 
-    [SerializeField] string startingLevel;
     [SerializeField] string[] levels;
     [SerializeField] string mainMenu;
     public int currentLevelIndex = -1;
@@ -21,20 +20,6 @@ public class ScreenController : MonoBehaviour {
         }
     }
 
-    public void StartPractice() {
-        GetComponent<GameController>().gameStarted = false;
-        SetupPreGame();
-        StartCoroutine(LoadLevel(startingLevel));
-    }
-
-    public void StartGame() {
-        GetComponent<GameController>().gameStarted = true;
-        if (GetComponent<GameController>().players.Count == 0) {
-            SetupPreGame();
-        }
-        GoToNextLevel();
-    }
-
     void SetupDebugging() {
         for (int i = 0; i < GetComponent<GameController>().playerCount; i++) {
             GameObject player = Instantiate(GetComponent<GameController>().playerPrefab);
@@ -45,10 +30,11 @@ public class ScreenController : MonoBehaviour {
         SetupGame();
     }
 
+    #region Before Game
     void SetupPreGame() {
         GameController controller = GetComponent<GameController>();
-        GetComponent<GameController>().players.Clear();
-        foreach(Transform child in menuController.menuPlayerSelection.GetComponent<MenuPlayerSelection>().playerWrapper) {
+        controller.players.Clear();
+        foreach (Transform child in menuController.menuPlayerSelection.GetComponent<MenuPlayerSelection>().playerWrapper) {
             MenuPlayerSelectionPlayer menuPlayer = child.GetComponent<MenuPlayerSelectionPlayer>();
             if (menuPlayer.isSelected) {
                 GameObject player = Instantiate(controller.playerPrefab);
@@ -60,21 +46,41 @@ public class ScreenController : MonoBehaviour {
         }
     }
 
-    IEnumerator LoadLevel(string _scenename) {
-        asyncLoadLevel = SceneManager.LoadSceneAsync(_scenename, LoadSceneMode.Single);
-        while (!asyncLoadLevel.isDone)
-        {
-            yield return null;
-        }
-        SetupGame();
-    }
-
     void SetupGame() {
         uiController = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIController>();
+        uiController.showIntro = GetComponent<GameController>().showIntro;
         uiController.GetComponent<UIController>().SetupControls(GetComponent<GameController>().players);
         GetComponent<GameController>().PrepareNewRound();
     }
 
+    public void StartGame() {
+        GoToFirstLevel();
+    }
+
+    void GoToFirstLevel() {
+        GetComponent<GameController>().gameStarted = true;
+        if (GetComponent<GameController>().players.Count == 0) {
+            SetupPreGame();
+        }
+        StartCoroutine(LoadLevel());
+    }
+
+    #endregion
+
+
+    #region Before Round
+
+
+    #endregion
+
+
+    #region In Round
+
+
+    #endregion
+
+
+    #region Between Rounds
     public void ShowResults() {
         uiController.ShowResults(GetComponent<GameController>().players);
     }
@@ -87,8 +93,37 @@ public class ScreenController : MonoBehaviour {
         StartCoroutine(LoadLevel(levels[currentLevelIndex]));
     }
 
+    IEnumerator LoadLevel(string _scenename = null) {
+        if (_scenename == null) {
+            if (currentLevelIndex < 0) {
+                currentLevelIndex = 0;
+            }
+            _scenename = levels[currentLevelIndex];
+        }
+        asyncLoadLevel = SceneManager.LoadSceneAsync(_scenename, LoadSceneMode.Single);
+        while (!asyncLoadLevel.isDone) {
+            yield return null;
+        }
+        SetupGame();
+    }
+
+    IEnumerator GoToMainMenu() {
+        asyncLoadLevel = SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+        while (!asyncLoadLevel.isDone) {
+            yield return null;
+        }
+        menuController = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuController>();
+    }
+
+    #endregion
+
+
     public void EndGame() {
-        SceneManager.LoadScene(mainMenu);
+        GetComponent<GameController>().players.ForEach((GameObject obj) => Destroy(obj));
+        GetComponent<GameController>().players = new List<GameObject>();
+        Destroy(uiController.gameObject);
+
+        StartCoroutine(GoToMainMenu());
     }
 
 }
