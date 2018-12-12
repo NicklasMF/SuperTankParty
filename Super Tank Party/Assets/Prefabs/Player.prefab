@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1519796471849184}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6829424, y: -1.3354104, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4200793328763966}
@@ -188,10 +188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae19ca966a7d4d3d8818ab13be8d463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyShooting: 107
-  keyRotating: 108
+  dead: 0
+  canMove: 0
   graphics: {fileID: 1272669385903460}
   graphicColor: {fileID: 212753211187722694}
+  explosion: {fileID: 1531179887862424, guid: cb590f3b48139461abdb5261b97a76e7, type: 2}
 --- !u!114 &114975250797619008
 MonoBehaviour:
   m_ObjectHideFlags: 1

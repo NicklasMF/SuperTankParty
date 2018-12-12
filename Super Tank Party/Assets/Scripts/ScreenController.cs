@@ -7,10 +7,11 @@ public class ScreenController : MonoBehaviour {
 
     [SerializeField] string[] levels;
     [SerializeField] string mainMenu;
-    public int currentLevelIndex = -1;
+    [HideInInspector] public int currentLevelIndex = -1;
 
-    public MenuController menuController;
-    public UIController uiController;
+    [HideInInspector] public CameraController cameraController;
+    [HideInInspector] public MenuController menuController;
+    [HideInInspector] public UIController uiController;
 
     AsyncOperation asyncLoadLevel;
 
@@ -47,6 +48,7 @@ public class ScreenController : MonoBehaviour {
     }
 
     void SetupGame() {
+        cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         uiController = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIController>();
         uiController.showIntro = GetComponent<GameController>().showIntro;
         uiController.GetComponent<UIController>().SetupControls(GetComponent<GameController>().players);
@@ -112,6 +114,7 @@ public class ScreenController : MonoBehaviour {
         while (!asyncLoadLevel.isDone) {
             yield return null;
         }
+        Destroy(cameraController.gameObject);
         menuController = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuController>();
     }
 

@@ -4,65 +4,46 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    public List<Transform> targets;
+    Transform camTransform;
 
-    public Vector3 offset;
-    public float smoothTime = .5f;
+    float shakeDuration = 0f;
+    float shakeAmount = 0.5f;
+    float decreaseFactor = 1.0f;
 
-    public float minZoom = 40f;
-    public float maxZoom = 10f;
-    public float zoomLimiter = 50f;
+    Vector3 originalPos;
 
-    Vector3 velocity;
-    Camera cam;
-
-    void Start()
-    {
-        cam = GetComponent<Camera>();
-    }
-
-    void LateUpdate () {
-        if (targets.Count == 0) {
-            return;
+    void Awake() {
+        if (GameObject.FindGameObjectsWithTag("MainCamera").Length > 1) {
+            Destroy(gameObject);
+        } else {
+            DontDestroyOnLoad(gameObject);
         }
-
-        Move();
-        //Zoom();
-	}
-
-    void Zoom() {
-        Debug.Log(GetGreatestSize());
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestSize() / zoomLimiter);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
-    }
-
-    float GetGreatestSize() {
-        var bounds = new Bounds(targets[0].position, Vector3.zero);
-        for (int i = 0; i < targets.Count; i++) {
-            bounds.Encapsulate(targets[i].position);
+        if (camTransform == null) {
+            camTransform = GetComponent(typeof(Transform)) as Transform;
         }
-        return bounds.size.z;
     }
 
-    void Move() {
-        Vector3 centerPoint = GetCenterPoint();
-
-        Vector3 newPosition = centerPoint + offset;
-
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+    void OnEnable() {
+        originalPos = camTransform.localPosition;
     }
 
-    Vector3 GetCenterPoint() {
-        if (targets.Count == 1) {
-            return targets[0].position;
+    void Update() {
+        if (shakeDuration > 0) {
+            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            shakeDuration -= Time.deltaTime * decreaseFactor;
+        } else {
+            shakeDuration = 0f;
+            camTransform.localPosition = originalPos;
         }
-
-        var bounds = new Bounds(targets[0].position, Vector3.zero);
-        for (int i = 0; i < targets.Count; i++)
-        {
-            bounds.Encapsulate(targets[i].position);
-        }
-
-        return bounds.center;
     }
+
+    public void Screenshake(ScreenshakeType screenshake) {
+        shakeDuration = 0.1f * (int) screenshake;
+    }
+}
+
+public enum ScreenshakeType {
+    Low = 1,
+    Medium = 2,
+    Hard = 3
 }

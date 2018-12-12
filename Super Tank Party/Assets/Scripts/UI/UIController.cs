@@ -13,7 +13,11 @@ public class UIController : MonoBehaviour {
     [HideInInspector] public bool showIntro;
 
     void Awake() {
-        DontDestroyOnLoad(gameObject);
+        if (GameObject.FindGameObjectsWithTag("Canvas").Length > 1) {
+            Destroy(gameObject);
+        } else {
+            DontDestroyOnLoad(gameObject);
+        }
         if (!showIntro) {
             Destroy(intro.gameObject);
         }

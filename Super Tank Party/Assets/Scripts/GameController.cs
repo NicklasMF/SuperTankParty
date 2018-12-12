@@ -23,13 +23,14 @@ public class GameController : MonoBehaviour {
 
 
     [Header("Game Settings")]
-    public bool gameStarted;
-    public bool roundStarted;
+
     public int life = 100;
     public float speedStandard = 25f;
     public float rotateSpeed = 120f;
     public float bulletsRecharge = 1f;
     public int winCondition = 3;
+    [HideInInspector] public bool gameStarted;
+    [HideInInspector] public bool roundStarted;
 
 
 
@@ -90,7 +91,7 @@ public class GameController : MonoBehaviour {
     }
 
     IEnumerator CheckForPlayersAlive() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         List<GameObject> playersAlive = new List<GameObject>();
         players.ForEach((player) => {
@@ -127,7 +128,7 @@ public class GameController : MonoBehaviour {
             }
         }
         if (!endGame) {
-            PrepareNewRound();
+            GetComponent<ScreenController>().GoToNextLevel();
         }
     }
 

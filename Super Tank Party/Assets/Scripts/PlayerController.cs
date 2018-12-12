@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Prefabs")]
     [SerializeField] GameObject graphics;
     public SpriteRenderer graphicColor;
+    [SerializeField] GameObject explosion;
 
     GameObject bulletPrefab;
     Transform bulletParent;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour {
 
     public void SetupGame() {
         gameObject.SetActive(true);
+        graphics.SetActive(true);
         dead = false;
         life = gameController.life;
         bulletCount = maxBulletCount;
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Rotate() {
+        if (!canMove) return;
         if (rotateRight) {
             transform.Rotate(0, 0, -rotateSpeed * Time.deltaTime);
         } else {
@@ -95,6 +98,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Shoot() {
+        if (!canMove) return;
         if (bulletCount > 0) {
             bulletCount--;
             GameObject bullet = Instantiate(bulletPrefab, bulletParent);
@@ -105,6 +109,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void RechargeShoot() {
+        if (!canMove) return;
         if (bulletCount < maxBulletCount) {
             if (timeUntilNewBullet < 0) {
                 bulletCount++;
@@ -125,6 +130,10 @@ public class PlayerController : MonoBehaviour {
 
     void Die() {
         dead = true;
+        gameController.GetComponent<ScreenController>().cameraController.Screenshake(ScreenshakeType.Low);
+        Instantiate(explosion, transform.position, transform.rotation);
+        graphics.SetActive(false);
         gameController.PlayerDead(gameObject);
     }
+
 }

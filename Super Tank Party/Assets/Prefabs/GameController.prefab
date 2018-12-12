@@ -86,9 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31675da34d0b94efbb05762621e8b3ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: StartingLevel
   levels:
   - Level1
+  - Level2
   mainMenu: MainMenu
   currentLevelIndex: -1
   menuController: {fileID: 0}

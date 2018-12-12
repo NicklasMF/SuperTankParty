@@ -1148,6 +1148,21 @@ Prefab:
       propertyPath: m_Name
       value: UIPlayerSelect (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fff5bb01a4f924a95bf9ed32f58a8e0c, type: 2}
   m_IsPrefabAsset: 0
@@ -1382,7 +1397,7 @@ Prefab:
     - target: {fileID: 114142065556273714, guid: ee74a81c9f1b245d9b8f3dcf99ee6787,
         type: 2}
       propertyPath: winCondition
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee74a81c9f1b245d9b8f3dcf99ee6787, type: 2}
@@ -1630,6 +1645,21 @@ Prefab:
       propertyPath: m_Name
       value: UIPlayerSelect (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224141729836661610, guid: fff5bb01a4f924a95bf9ed32f58a8e0c,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fff5bb01a4f924a95bf9ed32f58a8e0c, type: 2}
   m_IsPrefabAsset: 0
@@ -1842,7 +1872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Super Tank Party
+  m_Text: Pocket Tank Party
 --- !u!222 &2123537083
 CanvasRenderer:
   m_ObjectHideFlags: 0
