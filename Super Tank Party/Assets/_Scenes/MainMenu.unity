@@ -160,12 +160,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2436, y: 1125}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -801,6 +801,45 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 445991445}
   m_CullTransparentMesh: 0
+--- !u!1 &521792948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1211096815846012, guid: ee74a81c9f1b245d9b8f3dcf99ee6787,
+    type: 2}
+  m_PrefabInternal: {fileID: 1392568819}
+--- !u!114 &521792949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521792948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 207469858, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventName: Testing
+  m_TrackableProperty:
+    m_Fields:
+    - m_ParamName: 
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 0
+      m_StaticString: 
+  m_Trigger: 1
+--- !u!114 &521792952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521792948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dbaa84d9e5846a6986d02de55a9c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSinceAppOpened: 0
+  timeForRound: 0
 --- !u!1 &555018588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &759026552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1309,7 +1348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1186397056
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1861,10 +1900,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7fcf6ff2a837d4fdca525e0d98f9f77d, type: 3}
-    m_FontSize: 200
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 100
+    m_MinSize: 48
     m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0

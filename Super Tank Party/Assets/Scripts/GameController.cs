@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class GameController : MonoBehaviour {
 
@@ -59,6 +60,7 @@ public class GameController : MonoBehaviour {
             player.transform.rotation = positionParent.GetChild(player.GetComponent<Player>().index).rotation;
             player.GetComponent<PlayerController>().SetupGame();
         });
+        GetComponent<AnalyticsController>().StartGame();
         StartCoroutine(CountdownToStartRound());
     }
 
@@ -120,6 +122,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void EndRound() {
+        GetComponent<AnalyticsController>().EndRound();
         bool endGame = false;
         foreach (GameObject player in players) {
             if (player.GetComponent<Player>().points >= winCondition) {
