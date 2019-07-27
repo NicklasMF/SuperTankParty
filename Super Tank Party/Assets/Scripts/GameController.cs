@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
 
     [Header("State Machine")]
     public bool showIntro = true;
-
+    Coroutine checkForPlayersAlive;
 
 
     [Header("General Settings")]
@@ -89,7 +89,11 @@ public class GameController : MonoBehaviour {
     #region InGame
     public void PlayerDead(GameObject _object) {
         _object.SetActive(false);
-        StartCoroutine(CheckForPlayersAlive());
+        if (checkForPlayersAlive != null) {
+            StopCoroutine(checkForPlayersAlive);
+        }
+
+        checkForPlayersAlive = StartCoroutine(CheckForPlayersAlive());
     }
 
     IEnumerator CheckForPlayersAlive() {

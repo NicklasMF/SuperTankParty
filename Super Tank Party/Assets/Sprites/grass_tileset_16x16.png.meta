@@ -8,17 +8,17 @@ TextureImporter:
     21300006: grass_yellow_up_right
     21300008: grass_tileset_16x16_4
     21300010: grass_tileset_16x16_5
-    21300012: grass_tileset_16x16_6
-    21300014: grass_tileset_16x16_7
-    21300016: grass_tileset_16x16_8
+    21300012: sand_white
+    21300014: sand_white1
+    21300016: sand_white2
     21300018: grass_yellow_blank_some
     21300020: grass_yellow_center_left
     21300022: grass_yellow_center_right
     21300024: grass_tileset_16x16_12
     21300026: grass_tileset_16x16_13
-    21300028: grass_tileset_16x16_14
-    21300030: grass_tileset_16x16_15
-    21300032: grass_tileset_16x16_16
+    21300028: sand_middle_white
+    21300030: sand_middle_white1
+    21300032: sand_middle_white2
     21300034: grass_yellow_blank_more
     21300036: grass_yellow_down_left
     21300038: grass_yellow_down_center
@@ -269,7 +269,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_tileset_16x16_6
+      name: sand_white
       rect:
         serializedVersion: 2
         x: 96
@@ -289,7 +289,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_tileset_16x16_7
+      name: sand_white1
       rect:
         serializedVersion: 2
         x: 112
@@ -309,7 +309,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_tileset_16x16_8
+      name: sand_white2
       rect:
         serializedVersion: 2
         x: 128
@@ -429,7 +429,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_tileset_16x16_14
+      name: sand_middle_white
       rect:
         serializedVersion: 2
         x: 96
@@ -449,7 +449,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_tileset_16x16_15
+      name: sand_middle_white1
       rect:
         serializedVersion: 2
         x: 112
@@ -469,7 +469,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_tileset_16x16_16
+      name: sand_middle_white2
       rect:
         serializedVersion: 2
         x: 128

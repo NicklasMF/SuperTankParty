@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4024627381096104}
   - component: {fileID: 114142065556273714}
   - component: {fileID: 114340322428152274}
+  - component: {fileID: 114376792790817558}
+  - component: {fileID: 114935021339727144}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -52,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61111e940bd164bb580d63b150836cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugging: 1
+  isDebugging: 0
   playerCount: 2
   keys: 710000007700000061000000730000006f000000700000006b0000006c000000
   canvas: {fileID: 0}
@@ -63,13 +65,13 @@ MonoBehaviour:
   - {r: 0.02859211, g: 1, b: 0, a: 1}
   - {r: 0, g: 0.06871343, b: 1, a: 1}
   players: []
-  gameStarted: 0
-  roundStarted: 0
   life: 100
   speedStandard: 25
   rotateSpeed: 150
   bulletsRecharge: 1
   winCondition: 3
+  gameStarted: 0
+  roundStarted: 0
   playerPrefab: {fileID: 1519796471849184, guid: 411f4f86b0273490199c986a0fb1e118,
     type: 2}
   bulletPrefab: {fileID: 1921041580388868, guid: bec37fb9962564425865d0bc5a579b93,
@@ -89,7 +91,43 @@ MonoBehaviour:
   levels:
   - Level1
   - Level2
+  - Level3
   mainMenu: MainMenu
   currentLevelIndex: -1
+  cameraController: {fileID: 0}
   menuController: {fileID: 0}
   uiController: {fileID: 0}
+--- !u!114 &114376792790817558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211096815846012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 207469858, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventName: Testing
+  m_TrackableProperty:
+    m_Fields:
+    - m_ParamName: 
+      m_Target: {fileID: 0}
+      m_FieldPath: 
+      m_TypeString: 
+      m_DoStatic: 0
+      m_StaticString: 
+  m_Trigger: 1
+--- !u!114 &114935021339727144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211096815846012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dbaa84d9e5846a6986d02de55a9c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSinceAppOpened: 0
+  timeForRound: 0

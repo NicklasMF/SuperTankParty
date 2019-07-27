@@ -136,4 +136,7 @@ public class PlayerController : MonoBehaviour {
         gameController.PlayerDead(gameObject);
     }
 
+    void OnTriggerStay2D(Collider2D collision) {
+        print(collision.gameObject.name);
+    }
 }

@@ -801,45 +801,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 445991445}
   m_CullTransparentMesh: 0
---- !u!1 &521792948 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1211096815846012, guid: ee74a81c9f1b245d9b8f3dcf99ee6787,
-    type: 2}
-  m_PrefabInternal: {fileID: 1392568819}
---- !u!114 &521792949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 521792948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 207469858, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EventName: Testing
-  m_TrackableProperty:
-    m_Fields:
-    - m_ParamName: 
-      m_Target: {fileID: 0}
-      m_FieldPath: 
-      m_TypeString: 
-      m_DoStatic: 0
-      m_StaticString: 
-  m_Trigger: 1
---- !u!114 &521792952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 521792948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5dbaa84d9e5846a6986d02de55a9c3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeSinceAppOpened: 0
-  timeForRound: 0
 --- !u!1 &555018588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,16 +1389,6 @@ Prefab:
       propertyPath: menuController
       value: 
       objectReference: {fileID: 43888798}
-    - target: {fileID: 114142065556273714, guid: ee74a81c9f1b245d9b8f3dcf99ee6787,
-        type: 2}
-      propertyPath: isDebugging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114142065556273714, guid: ee74a81c9f1b245d9b8f3dcf99ee6787,
-        type: 2}
-      propertyPath: winCondition
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee74a81c9f1b245d9b8f3dcf99ee6787, type: 2}
   m_IsPrefabAsset: 0

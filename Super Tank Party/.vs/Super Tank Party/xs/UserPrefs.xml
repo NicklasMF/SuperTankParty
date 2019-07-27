@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{49812CF2-1B0B-6CA3-9A11-98575C8D9324}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AnalyticsController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu/MenuController.cs">
     <Files>
-      <File FileName="Assets/Scripts/UI/UIResultController.cs" Line="29" Column="1" />
-      <File FileName="Assets/Scripts/GameController.cs" Line="34" Column="48" />
-      <File FileName="Assets/AnalyticsController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CameraController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="92" Column="1" />
+      <File FileName="Assets/Scripts/MainMenu/MenuController.cs" Line="28" Column="98" />
+      <File FileName="Assets/Scripts/ScreenController.cs" Line="41" Column="3" />
+      <File FileName="Assets/Scripts/MenuPlayerSelection.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MainMenu/MenuPlayerSelectionPlayer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
